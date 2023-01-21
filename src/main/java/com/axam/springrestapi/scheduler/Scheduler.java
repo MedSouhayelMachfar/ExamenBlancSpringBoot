@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Scheduler {
 
-    @Scheduled(cron = "60 * * * * *")
+    @Scheduled(cron = "0 * * * * *")
     public void statistiques(){
         log.info("Method with cron expression");
     }
