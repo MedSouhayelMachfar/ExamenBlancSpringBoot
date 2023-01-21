@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.axam.springrestapi.entity.Assurance;
+import com.axam.springrestapi.entity.Beneficiaire;
 import com.axam.springrestapi.exception.ResourceNotFoundException;
 import com.axam.springrestapi.repository.AssuranceRepository;
 import com.axam.springrestapi.service.AssuranceService;
@@ -47,5 +48,13 @@ public class AssuranceServiceImpl implements AssuranceService {
     public void removeAssurance(Long idAssurance) {
         Assurance Assurance = assuranceRepository.findById(idAssurance).orElseThrow(() -> new ResourceNotFoundException("Assurance", "idAssurance", idAssurance));
 		assuranceRepository.delete(Assurance);
+    }
+
+    @Override
+    public Long ajouterAssurance(Assurance a, int cinBf) {
+        Beneficiaire b = new Beneficiaire();
+        b.setCin(cinBf);
+        a.setBeneficiaire(b);
+        return assuranceRepository.save(a).getIdAssurance();
     }
 }

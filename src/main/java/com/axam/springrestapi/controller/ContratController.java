@@ -20,7 +20,7 @@ import com.axam.springrestapi.service.ContratService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Contrat")
 @RestController
-@RequestMapping("/api/v1/Contrats")
+@RequestMapping("/api/v1/contrats")
 public class ContratController {
 	@Autowired
 	ContratService contratService;

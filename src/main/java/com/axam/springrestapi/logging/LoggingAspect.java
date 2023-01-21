@@ -1,10 +1,8 @@
 package com.axam.springrestapi.logging;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
@@ -14,22 +12,11 @@ import lombok.extern.slf4j.Slf4j;
 @Aspect
 @Slf4j
 public class LoggingAspect {
-    @Pointcut("execution(* com.td1.td1.controller.*.*(..))")
+    @Pointcut("execution(* com.axam.springrestapi.service.*.get*(..))")
     public void loggingPointCut(){ }
 
-    @Before("loggingPointCut()")
+    @After("loggingPointCut()")
     public void logMethodEntry(JoinPoint joinPoint) {
-        String name = joinPoint.getSignature().getName();
-        log.info("La méthode " + name + " : vient d'etre lancée ");
+        log.info("Bon courage !");
     }
-
-    @Around("loggingPointCut()")
-    public Object profile(ProceedingJoinPoint pjp) throws Throwable {
-        long start = System.currentTimeMillis();
-        Object obj = pjp.proceed();
-        long elapsedTime = System.currentTimeMillis() - start;
-        log.info("Method execution time: " + elapsedTime + " milliseconds.");
-        return obj;
-    }
-
 }

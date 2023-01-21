@@ -20,10 +20,16 @@ import com.axam.springrestapi.service.BeneficiaireService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Beneficiaire")
 @RestController
-@RequestMapping("/api/v1/Beneficiaires")
+@RequestMapping("/api/v1/beneficiaires")
 public class BeneficiaireController {
 	@Autowired
 	BeneficiaireService beneficiaireService;
+
+	@PostMapping("/ajouterBeneficaire")
+	public ResponseEntity<Integer> ajouterBeneficaire(@RequestBody Beneficiaire beneficiaire) {
+		 int cinBenef = beneficiaireService.ajouterBeneficaire(beneficiaire);
+		 return ResponseEntity.status(HttpStatus.CREATED).body(cinBenef);
+	}
 
 	@GetMapping()
 	public List<Beneficiaire> getAllBeneficiaires() {

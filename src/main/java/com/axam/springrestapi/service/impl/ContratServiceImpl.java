@@ -49,4 +49,10 @@ public class ContratServiceImpl implements ContratService {
         Contrat contrat = contratRepository.findById(idContrat).orElseThrow(() -> new ResourceNotFoundException("Contrat", "idContrat", idContrat));
 		contratRepository.delete(contrat);
     }
+
+    @Override
+    public Contrat getContratBf(int idBf) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

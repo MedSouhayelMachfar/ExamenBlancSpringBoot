@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,9 @@ public class Beneficiaire implements Serializable {
     private int cin;
     private String nom;
     private String prenom;
+    @NotNull
     private String profession;
+    @NotNull
     private float salaire;
 
     // Association

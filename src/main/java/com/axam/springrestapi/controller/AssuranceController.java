@@ -25,6 +25,13 @@ public class AssuranceController {
 	@Autowired
 	AssuranceService assuranceService;
 
+	@PostMapping("/ajouterAssurance")
+	public ResponseEntity<Long> ajouterAssurance(@RequestBody Assurance assurance) {
+		int benifCin = assurance.getBeneficiaire().getCin();
+		 Long createdAssurance = assuranceService.ajouterAssurance(assurance, benifCin);
+		 return ResponseEntity.status(HttpStatus.CREATED).body(createdAssurance);
+	}
+
 	@GetMapping()
 	public List<Assurance> getAllAssurances() {
 		return assuranceService.retrieveAllAssurances();
