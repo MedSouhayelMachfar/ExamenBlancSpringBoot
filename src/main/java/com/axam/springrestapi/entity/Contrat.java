@@ -34,6 +34,8 @@ public class Contrat implements Serializable {
     private Date dateEffet;
     @Enumerated(EnumType.STRING)
     private TypeContrat type;
+
+    // Association
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Assurance> assurances;
 }

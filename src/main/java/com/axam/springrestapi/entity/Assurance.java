@@ -24,6 +24,8 @@ public class Assurance implements Serializable {
     private Long idAssurance; // Clé primaire
     private String designation;
     private String montant;
+
+    // Association
     @ManyToOne
     Beneficiaire beneficiaire;
 }

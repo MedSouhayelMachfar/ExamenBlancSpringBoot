@@ -31,6 +31,7 @@ public class Beneficiaire implements Serializable {
     private String profession;
     private float salaire;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="assurance")
+    // Association
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="beneficiaire")
     private Set<Assurance> assurances;
 }
